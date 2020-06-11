@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+        <meta name="keywords" contents= "pratichha portfolio">
+        <meta name = "discriptions" contents="pratichha pokahara portfolio">
+        <link rel= "icon" href="favicon.png">
+      <link rel="stylesheet" href="style.css">
+
+        
+    <title>MY portfolio</title>
+</head>
+<body> 
+    <div id = "loading">
+        loading...
+    </div>
+    <div    class="container" id="maincontainer"  hidden> 
+        <div class="aboutme"><a class="navbar-brand js-scroll-trigger" href="#page-top"><b>About Me</b></a>
+        </div>
+        <div>
+            <img id="profileimage"  height="220" width="200">
+        <h3 id = "fullname"></h3>
+        <p id ="bio"> Be focused and learn</p>
+        <p>check me on github <a id="githublink">Github</a></p>
+     
+        <a class="twitter-timeline" data-width="180" data-height="400"
+         href="https://twitter.com/pratichhakunwar?ref_src=twsrc%5Etfw">Tweets by pratichhakunwar</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+       
+        </div>
+    <script> 
+        fetch("https://api.github.com/users/pratichha")
+        .then(Response => Response.json())
+        .then(function (data){
+            console.log(data)
+            document.getElementById('profileimage').src=data['avatar_url']
+            document.getElementById('fullname').textContent=data['name']
+            document.getElementById('bio').textContent=data['bio']
+            document.getElementById('githublink').href=data['html_url']
+            document.getElementById('maincontainer').hidden=false
+            document.getElementById('loading').hidden=true
+
+
+            }
+        )
+    </script>
+</body>
+</html
